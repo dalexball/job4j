@@ -15,12 +15,8 @@ public class SqMax {
             }
         } else if (third > forth) {
             result = third;
-        }
+    }
         return result;
     }
 
-    public static void main(String[] args){
-        int result = max(4,3,2,1);
-        System.out.println(result);
-    }
 }
