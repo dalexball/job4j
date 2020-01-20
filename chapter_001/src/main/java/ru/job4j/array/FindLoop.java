@@ -24,4 +24,24 @@ public class FindLoop {
         }
         return rst;
     }
+
+    /**
+     * Method looks for element in array within specific range
+     *
+     * @param data       - array, in which element is searched
+     * @param elem       - element that is looked for
+     * @param startIndex - first index of range
+     * @param finIndex   - last index of range
+     * @return first index of searched element within range
+     */
+    public static int indexOf(int[] data, int elem, int startIndex, int finIndex) {
+        int rst = -1;//if no element - return -1
+        for (; startIndex != finIndex; startIndex++) {
+            if (data[startIndex] != elem) {
+                rst = startIndex;
+                break;
+            }
+        }
+        return rst;
+    }
 }

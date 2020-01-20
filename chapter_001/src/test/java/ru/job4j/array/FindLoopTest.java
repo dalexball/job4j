@@ -32,4 +32,32 @@ public class FindLoopTest {
         int expect = -1;
         assertThat(result, is(expect));
     }
+
+    /**
+     * Checks if method works fine if range contains value
+     */
+    @Test
+    public void whenFind() {
+        int[] input = new int[]{5, 2, 10, 2, 4};
+        int value = 2;
+        int start = 2;
+        int finish = 4;
+        int result = FindLoop.indexOf(input, value, start, finish);
+        int expect = 3;
+        assertThat(result, is(expect));
+    }
+
+    /**
+     * Checks if method works fine if no value within range
+     */
+    @Test
+    public void whenDoesNotFind() {
+        int[] input = new int[]{5, 2, 10, 2, 4};
+        int value = 6;
+        int start = 2;
+        int finish = 4;
+        int result = FindLoop.indexOf(input, value, start, finish);
+        int expect = 3;
+        assertThat(result, is(expect));
+    }
 }
