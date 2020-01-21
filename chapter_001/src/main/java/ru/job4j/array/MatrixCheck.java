@@ -25,4 +25,24 @@ public class MatrixCheck {
         }
         return result;
     }
+
+    /**
+     * Method checks if specific row in input board is mono or not
+     *
+     * @param board  - input array of arrays of chars
+     * @param column - column that is checked if it's mono
+     * @return true if column is mono, false if not
+     */
+    public static boolean monoVertical(char[][] board, int column) {
+        boolean result = true;
+        char etalon = board[0][column];
+        for (int i = 1; i != board[column].length; i++) {
+            if (board[i][column] != etalon) {
+                result = false;
+                break;
+            }
+        }
+        return result;
+    }
+
 }

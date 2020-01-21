@@ -40,4 +40,33 @@ public class MatrixCheckTest {
         boolean result = MatrixCheck.monoHorizontal(input, 1);
         assertThat(result, is(false));
     }
+
+    /**
+     * Method checks if result of monoVertical method is true for mono column
+     */
+    @Test
+    public void whenHasMonoVertical() {
+        char[][] input = {
+                {' ', ' ', 'X'},
+                {' ', ' ', 'X'},
+                {' ', ' ', 'X'},
+        };
+        boolean result = MatrixCheck.monoVertical(input, 2);
+        assertThat(result, is(true));
+    }
+
+    /**
+     * Method checks if result of monoVertical method is false for not mono column
+     */
+    @Test
+    public void whenNotMonoVertical() {
+        char[][] input = {
+                {' ', ' ', 'X'},
+                {' ', 'X', ' '},
+                {'X', ' ', ' '},
+        };
+        boolean result = MatrixCheck.monoVertical(input, 2);
+        assertThat(result, is(false));
+    }
+
 }
