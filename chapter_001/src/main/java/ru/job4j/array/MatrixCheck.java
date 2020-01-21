@@ -36,7 +36,7 @@ public class MatrixCheck {
     public static boolean monoVertical(char[][] board, int column) {
         boolean result = true;
         char etalon = board[0][column];
-        for (int i = 1; i != board[column].length; i++) {
+        for (int i = 1; i != board.length; i++) {
             if (board[i][column] != etalon) {
                 result = false;
                 break;
@@ -45,4 +45,17 @@ public class MatrixCheck {
         return result;
     }
 
+    /**
+     * Method creates array of chars that contains values of diagonal of input matrix of chars
+     *
+     * @param board - input matrix
+     * @return array of chars that contains values of diagonal of input matrix of chars
+     */
+    public static char[] extractDiagonal(char[][] board) {
+        char[] result = new char[board.length];
+        for (int i = 0; i != board.length; i++) {
+            result[i] = board[i][i];
+        }
+        return result;
+    }
 }
