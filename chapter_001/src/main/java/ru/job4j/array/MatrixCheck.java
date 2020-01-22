@@ -58,4 +58,24 @@ public class MatrixCheck {
         }
         return result;
     }
+
+    /**
+     * Method checks if there is any column or row that contains that is mono and contains 'X' char
+     *
+     * @param board - input matrix
+     * @return true if column/row contains 'X' chars only, false if not
+     */
+    public static boolean isWin(char[][] board) {
+        boolean result = false;
+        int index = 0;
+        for (; index != board.length; index++) {
+            if (board[index][index] == 'X') {
+                if (monoHorizontal(board, index) || monoVertical(board, index)) {
+                    result = true;
+                    break;
+                }
+            }
+        }
+        return result;
+    }
 }
