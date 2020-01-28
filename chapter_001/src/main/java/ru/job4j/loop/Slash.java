@@ -11,6 +11,7 @@ public class Slash {
 
     /**
      * Method draws crosses of given size
+     *
      * @param size - size of cross
      */
     public static void paintCross(int size) {
@@ -22,7 +23,9 @@ public class Slash {
                     System.out.print('X');
                 } else if (right) {
                     System.out.print('X');
-                } else System.out.print(' ');
+                } else {
+                    System.out.print(' ');
+                }
             }
             System.out.println();
         }

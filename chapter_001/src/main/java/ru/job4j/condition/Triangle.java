@@ -7,10 +7,12 @@ public class Triangle {
             sum = ab + bc;
             if (sum > ac) {
                 sum = ac + bc;
-                if (sum > ab) {
-                    return true;
-                } else return false;
-            } else return false;
-        } else return false;
+                return sum > ab;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
     }
 }

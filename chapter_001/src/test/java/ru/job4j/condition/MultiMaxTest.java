@@ -29,9 +29,9 @@ public class MultiMaxTest {
     }
 
     @Test
-    public void allEqual(){
+    public void allEqual() {
         MultiMax check = new MultiMax();
-        int result=check.max(5,5,5);
-        assertThat(result,is(5));
+        int result = check.max(5, 5, 5);
+        assertThat(result, is(5));
     }
 }
