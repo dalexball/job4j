@@ -7,7 +7,7 @@ public class Counter {
         for (int curVal = start; curVal <= finish; curVal++) {
             if (curVal % 2 == 0) {
                 sum += curVal;
-            } else continue;
+            }
         }
         return sum;
     }

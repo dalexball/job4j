@@ -15,7 +15,7 @@ public class FindLoop {
      * @return first index of searched element
      */
     public int indexOf(int[] data, int elem) {
-        int rst = -1;//if no element - return -1
+        int rst = -1; //if no element - return -1
         for (int index = 0; index != data.length; index++) {
             if (data[index] == elem) {
                 rst = index;
@@ -35,7 +35,7 @@ public class FindLoop {
      * @return first index of searched element within range
      */
     public static int indexOf(int[] data, int elem, int startIndex, int finIndex) {
-        int rst = -1;//if no element - return -1
+        int rst = -1; //if no element - return -1
         for (; startIndex != finIndex; startIndex++) {
             if (data[startIndex] != elem) {
                 rst = startIndex;
