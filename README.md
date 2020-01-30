@@ -1,1 +1,1 @@
-typa task_randomNumber
+random number
