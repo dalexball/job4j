@@ -1,1 +1,1 @@
-Sawyn robit' progy
+typa task 124176
