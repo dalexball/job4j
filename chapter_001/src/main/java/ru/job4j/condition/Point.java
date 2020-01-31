@@ -1,16 +1,41 @@
 package ru.job4j.condition;
 
+/**
+ * Class models point
+ *
+ * @author Alex Dotsyak
+ * @version 2
+ */
 public class Point {
-    public static double distance(int x1, int y1, int x2, int y2) {
-        return (Math.sqrt(Math.pow((x1 - x2), 2) + Math.pow((y1 - y2), 2)));
+
+    private int x;
+
+    private int y;
+
+    public Point(int x, int y) {
+        this.x = x;
+        this.y = y;
     }
 
-    public static void main(String[] args) {
-        double result = distance(0, 0, 2, 0);
-        System.out.println("result (0, 0) to (2, 0) is " + result);
-        result = distance(1, 1, 5, 4);
-        System.out.println("result (1, 2) to (5, 4) is " + result);
-        result = distance(3, 15, 3, 15);
-        System.out.println("result (3, 15) to (3, 15) is " + result);
+    /**
+     * Calculates distance between this point to another
+     *
+     * @param another - another point
+     * @return distance between points
+     */
+    public double distance(Point another) {
+        return (Math.sqrt(Math.pow((this.x - another.x), 2) + Math.pow((this.y - another.y), 2)));
     }
+
+    /**
+     * Calculates distance between two points
+     *
+     * @param first  - first point
+     * @param second - second point
+     * @return distance between points
+     */
+    public static double distance(Point first, Point second) {
+        return (Math.sqrt(Math.pow((first.x - second.x), 2) + Math.pow((first.y - second.y), 2)));
+    }
+
 }

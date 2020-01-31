@@ -3,15 +3,35 @@ package ru.job4j.condition;
 import org.junit.Assert;
 import org.junit.Test;
 
+/**
+ * Test class for Point.class
+ *
+ * @author Alex Dotsyak
+ * @version 2
+ */
 public class PointTest {
+
+    /**
+     * Checks if static version of method "distance" works fine
+     */
     @Test
     public void distance() {
-        int inX1 = 0;
-        int inY1 = 0;
-        int inX2 = 2;
-        int inY2 = 0;
+        Point first = new Point(0, 0);
+        Point second = new Point(2, 0);
         double expected = 2;
-        double out = Point.distance(inX1, inY1, inX2, inY2);
+        double out = Point.distance(first, second);
+        Assert.assertEquals(expected, out, 0.01);
+    }
+
+    /**
+     * Checks if non-static version of method "distance" works fine
+     */
+    @Test
+    public void distance2() {
+        Point first = new Point(5, 0);
+        Point second = new Point(0, 0);
+        double expected = 5;
+        double out = first.distance(second);
         Assert.assertEquals(expected, out, 0.01);
     }
 }
