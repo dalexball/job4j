@@ -8,25 +8,40 @@ package ru.job4j.calculator;
  */
 public class Calculator {
     /**
-     * Prints result of adding of two vars.
+     * Calculates result of adding of two vars.
      *
      * @param firstVal-firstVal
      * @param secondVal-secondVal
+     * @return result of adding of two vars
      */
-    public static void add(double firstVal, double secondVal) {
+    public static double add(double firstVal, double secondVal) {
         double result = firstVal + secondVal;
-        System.out.println(firstVal + "+" + secondVal + "=" + result);
+        return result;
     }
 
     /**
-     * Prints result of subtracting between two vars.
+     * Calculates result of adding of three values
+     *
+     * @param firstVal  - firstVal
+     * @param secondVal - secondVal
+     * @param thirdVal  - thirdVal
+     * @return result
+     */
+    public static double add(double firstVal, double secondVal, double thirdVal) {
+        double result = add(firstVal, add(secondVal, thirdVal));
+        return result;
+    }
+
+    /**
+     * Calculates result of subtracting between two vars.
      *
      * @param firstVal-firstVal
      * @param secondVal-secondVal
+     * @return result
      */
-    public static void subtract(double firstVal, double secondVal) {
+    public static double subtract(double firstVal, double secondVal) {
         double result = firstVal - secondVal;
-        System.out.println(firstVal + "-" + secondVal + "=" + result);
+        return result;
     }
 
     /**
@@ -34,10 +49,11 @@ public class Calculator {
      *
      * @param firstVal-firstVal
      * @param secondVal-secondVal
+     * @return result
      */
-    public static void multiply(double firstVal, double secondVal) {
+    public static double multiply(double firstVal, double secondVal) {
         double result = firstVal * secondVal;
-        System.out.println(firstVal + "*" + secondVal + "=" + result);
+        return result;
     }
 
     /**
@@ -45,21 +61,17 @@ public class Calculator {
      *
      * @param firstVal-firstVal
      * @param secondVal-secondVal
+     * @return result
      */
-    public static void div(double firstVal, double secondVal) {
+    public static double div(double firstVal, double secondVal) {
         double result = firstVal / secondVal;
-        System.out.println(firstVal + "/" + secondVal + "=" + result);
+        return result;
     }
 
-    /**
-     * Calculates some vars.
-     *
-     * @param args-args
-     */
     public static void main(String[] args) {
-        add(1, 1);
-        div(4, 2);
-        multiply(2, 1);
-        subtract(10, 5);
+        System.out.println(add(1, 1));
+        System.out.println(div(4, 2));
+        System.out.println(multiply(2, 1));
+        System.out.println(subtract(10, 5));
     }
 }
