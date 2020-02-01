@@ -15,11 +15,12 @@ public class Battery {
 
     /**
      * Takes away load of this battery and moves it to another
+     *
      * @param another - another battery
      */
-    public void exchange(Battery another){
-        another.load+=this.load;
-        this.load=0;
+    public void exchange(Battery another) {
+        another.load += this.load;
+        this.load = 0;
     }
 
 }

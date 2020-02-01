@@ -43,10 +43,11 @@ public class Triangle {
     }
 
     /**
-     * Cheks if triangle exists
-     * @param first - first side
+     * Checks if triangle exists
+     *
+     * @param first  - first side
      * @param second - second side
-     * @param third - third side
+     * @param third  - third side
      * @return true, if triangle with these sides can exist, false if can't
      */
     public static boolean exists(double first, double second, double third) {
@@ -63,22 +64,24 @@ public class Triangle {
 
     /**
      * Calculates area of triangle
+     *
      * @return area of triangle
      */
     public double area() {
-        double halfPerimeter = (firstSide + thirdSide + secondSide)/2;
-        return Math.sqrt(halfPerimeter*(halfPerimeter- secondSide)*(halfPerimeter- firstSide)*(halfPerimeter- thirdSide));
+        double halfPerimeter = (firstSide + thirdSide + secondSide) / 2;
+        return Math.sqrt(halfPerimeter * (halfPerimeter - secondSide) * (halfPerimeter - firstSide) * (halfPerimeter - thirdSide));
     }
 
     /**
      * Calculates area of triangle
-     * @param first - first side
+     *
+     * @param first  - first side
      * @param second - second side
-     * @param third - third side
+     * @param third  - third side
      * @return area of triangle
      */
-    public static double area(double first, double second, double third){
-        double halfPerimeter = (first + second + third)/2;
-        return Math.sqrt(halfPerimeter*(halfPerimeter- second)*(halfPerimeter- first)*(halfPerimeter- third));
+    public static double area(double first, double second, double third) {
+        double halfPerimeter = (first + second + third) / 2;
+        return Math.sqrt(halfPerimeter * (halfPerimeter - second) * (halfPerimeter - first) * (halfPerimeter - third));
     }
 }
