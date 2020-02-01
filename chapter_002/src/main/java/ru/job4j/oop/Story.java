@@ -1,5 +1,8 @@
 package ru.job4j.oop;
 
+/**
+ * Class models tale about red little riding hood
+ */
 public class Story {
     public static void main(String[] args) {
         Pioneer petya = new Pioneer();

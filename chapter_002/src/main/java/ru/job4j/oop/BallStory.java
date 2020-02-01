@@ -1,5 +1,11 @@
 package ru.job4j.oop;
 
+/**
+ * Class models tale about ball
+ *
+ * @author Alex Dotsyak
+ * @version 1
+ */
 public class BallStory {
     public static void main(String[] args) {
         Ball ball = new Ball();

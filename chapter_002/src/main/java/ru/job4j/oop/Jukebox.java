@@ -1,7 +1,17 @@
 package ru.job4j.oop;
 
+/**
+ * Class models jukebox
+ *
+ * @author Alex Dotsyak
+ * @version 1
+ */
 public class Jukebox {
 
+    /**
+     * Plays different music depending on input
+     * @param position - point at which is certain music
+     */
     public void music(int position) {
         if (position == 1) {
             System.out.println("Пусть бегут неуклюже");
