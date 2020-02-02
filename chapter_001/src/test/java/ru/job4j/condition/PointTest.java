@@ -34,4 +34,28 @@ public class PointTest {
         double out = first.distance(second);
         Assert.assertEquals(expected, out, 0.01);
     }
+
+    /**
+     * Checks if non-static version of method "distance3D" works fine
+     */
+    @Test
+    public void distance3DNonStatic() {
+        Point first = new Point(3, 0, 4);
+        Point second = new Point(0, 0, 0);
+        double expected = 5;
+        double out = first.distance3D(second);
+        Assert.assertEquals(expected, out, 0.01);
+    }
+
+    /**
+     * Checks if static version of method "distance3D" works fine
+     */
+    @Test
+    public void distance3DStatic() {
+        Point first = new Point(3, 0, 4);
+        Point second = new Point(0, 0, 0);
+        double expected = 5;
+        double out = Point.distance3D(first, second);
+        Assert.assertEquals(expected, out, 0.01);
+    }
 }
