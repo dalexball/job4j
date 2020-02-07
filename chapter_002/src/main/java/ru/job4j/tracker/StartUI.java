@@ -1,90 +1,45 @@
 package ru.job4j.tracker;
 
-import java.util.Scanner;
-
+/**
+ * Class that provides user with interface of program
+ *
+ * @author Alex Dotsyak
+ * @version 1
+ */
 public class StartUI {
-    public void init(Scanner scanner, Tracker tracker) {
+
+    /**
+     * Initializes menu and works with user
+     *
+     * @param input       - input
+     * @param tracker     - tracker
+     * @param userActions - user actions
+     */
+    public void init(Input input, Tracker tracker, UserAction[] userActions) {
         boolean run = true;
         while (run) {
-            this.showMenu();
-            System.out.println("Select: ");
-            int select = Integer.valueOf(scanner.nextLine());
-            if (select == 0) {
-                System.out.println("===Create a new Item ===");
-                System.out.println("Enter name: ");
-                String name = scanner.nextLine();
-                Item item = new Item(name);
-                tracker.add(item);
-            } else if (select == 1) {
-                System.out.println("===Show all Items===");
-                Item[] items;
-                items = tracker.findAll();
-                for (Item item : items) {
-                    if (item != null) {
-                        System.out.format("Item name: %1s, item id: %2s.%n", item.getName(), item.getId());
-                    }
-                }
-            } else if (select == 2) {
-                System.out.println("===Edit Item by ID===");
-                System.out.println("Enter ID: ");
-                String id = scanner.nextLine();
-                Item item;
-                item = tracker.findById(id);
-                System.out.println("Enter new name: ");
-                String name = scanner.nextLine();
-                item.setName(name);
-            } else if (select == 3) {
-                System.out.println("===Edit Item by ID===");
-                System.out.println("Enter ID: ");
-                String id = scanner.nextLine();
-                tracker.deleteById(id);
-            } else if (select == 4) {
-                System.out.println("===Find Item by ID===");
-                System.out.println("Enter ID: ");
-                String id = scanner.nextLine();
-                Item item = tracker.findById(id);
-                if (item != null) {
-                    System.out.format("Item name: %1s, item id: %2s.%n", item.getName(), item.getId());
-                }
-            } else if (select == 5) {
-                System.out.println("===Find Items by name===");
-                System.out.println("Enter name: ");
-                String name = String.valueOf(scanner.nextLine());
-                Item[] items;
-                items = tracker.findByName(name);
-                for (Item item : items) {
-                    if (item != null) {
-                        System.out.format("Item name: %1s, item id: %2s.%n", item.getName(), item.getId());
-                    }
-                }
-            } else if (select == 6) {
-                run = false;
-            } else {
-                System.out.println("Incorrect input, please type in correct number");
-            }
+            this.showMenu(userActions);
+            int select = input.askInt("Select: ");
+            run = userActions[select].execute(input, tracker);
         }
     }
 
-    private void showMenu() {
-        String[] menu = new String[]{
-                "0. Add new item",
-                "1. Show all items",
-                "2. Edit item",
-                "3. Delete item",
-                "4. Find item by ID",
-                "5. Find items by name",
-                "6. Exit Program"
-        };
-        for (String menuItem : menu) {
-            System.out.println(menuItem);
+    /**
+     * Show menu that contains possible user actions
+     *
+     * @param userActions - user actions
+     */
+    private void showMenu(UserAction[] userActions) {
+        for (int index = 0; index < userActions.length; index++) {
+            System.out.println(index + ". " + userActions[index].name());
         }
     }
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        Input input = new ConsoleInput();
         Tracker tracker = new Tracker();
-        new StartUI().init(scanner, tracker);
+        new StartUI().init(input, tracker, new UserAction[]{
+                new CreateItem(), new ShowAll(), new EditItem(),
+                new DeleteItem(), new FindItem(), new FindByName(), new ExitProgram()});
     }
-
-
 }

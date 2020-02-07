@@ -12,6 +12,9 @@ import static org.junit.Assert.assertThat;
  * @version 1
  */
 public class TrackerTest {
+    /**
+     * Checks if tracker has same item, as added to it
+     */
     @Test
     public void whenAddNewItemThenTrackerHasSameItem() {
         Tracker tracker = new Tracker();
@@ -20,4 +23,16 @@ public class TrackerTest {
         Item result = tracker.findById(item.getId());
         assertThat(result.getName(), is(item.getName()));
     }
+
+    /**
+     * Checks if StartUI works as it is needed
+     */
+    @Test
+    public void whenExit() {
+        StubInput input = new StubInput(new String[]{"0"});
+        StubAction action = new StubAction();
+        new StartUI().init(input, new Tracker(), new UserAction[]{action});
+        assertThat(action.isCall(), is(true));
+    }
+
 }

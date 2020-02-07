@@ -103,7 +103,13 @@ public class Tracker {
         return null;
     }
 
-    public int findPosition(String id) {
+    /**
+     * Gets index of item in array
+     *
+     * @param id - id of item
+     * @return - index of item
+     */
+    private int findPosition(String id) {
         for (int i = 0; i < this.items.length; i++) {
             if (this.items[i].getId().equals(id)) {
                 return i;
@@ -112,6 +118,11 @@ public class Tracker {
         return -1;
     }
 
+    /**
+     * Replaces element in array with null (deletes item from array)
+     *
+     * @param id - id of element
+     */
     public void deleteById(String id) {
         int index = findPosition(id);
         if (index >= 0) {
