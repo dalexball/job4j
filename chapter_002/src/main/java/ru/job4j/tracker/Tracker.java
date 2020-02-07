@@ -40,9 +40,9 @@ public class Tracker {
      */
     public Item add(Item item) {
         item.setId(this.generateId());
-        items[this.position++] = item;
+        items[this.position] = item;
+        this.position++;
         return item;
-
     }
 
     /**
@@ -52,16 +52,17 @@ public class Tracker {
      */
     public Item[] findAll() {
         Item[] items = new Item[this.items.length];
+        items = Arrays.copyOf(this.items, this.items.length);
         int size = 0;
         for (int index = 0; index < items.length; index++) {
-            String name = items[index].getName();
-            if (name != null) {
+            if (items[index] != null) {
                 items[size] = items[index];
                 size++;
             }
         }
-        items = Arrays.copyOf(items, size);
-        return items;
+        Item[] newItems;
+        newItems = Arrays.copyOf(items, size);
+        return newItems;
     }
 
     /**
@@ -72,15 +73,18 @@ public class Tracker {
      */
     public Item[] findByName(String key) {
         Item[] items = new Item[this.items.length];
+        items = Arrays.copyOf(this.items, this.items.length);
         int size = 0;
         for (int index = 0; index < items.length; index++) {
-            String name = items[index].getName();
-            if (name.equals(key)) {
-                items[size] = items[index];
-                size++;
+            if (items[index] != null) {
+                String name = items[index].getName();
+                if (name.equals(key)) {
+                    items[size] = items[index];
+                    size++;
+                }
             }
         }
-        items = Arrays.copyOf(items, size);
+        items = Arrays.copyOf(items, size + 1);
         return items;
     }
 
@@ -92,10 +96,28 @@ public class Tracker {
      */
     public Item findById(String id) {
         for (int i = 0; i != position + 1; i++) {
-            if (items[i].getId().equals(id)) {
+            if (items[i] != null && items[i].getId().equals(id)) {
                 return items[i];
             }
         }
         return null;
+    }
+
+    public int findPosition(String id) {
+        for (int i = 0; i < this.items.length; i++) {
+            if (this.items[i].getId().equals(id)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public void deleteById(String id) {
+        int index = findPosition(id);
+        if (index >= 0) {
+            items[index] = null;
+        } else {
+            System.out.println("There is no element with such ID");
+        }
     }
 }
