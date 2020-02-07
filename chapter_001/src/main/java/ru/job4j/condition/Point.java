@@ -54,11 +54,11 @@ public class Point {
      * @return distance between points
      */
     public double distance3D(Point another) {
-        return (Math.sqrt
-                (Math.pow((this.x - another.x), 2)
+        return (Math.sqrt(
+                          Math.pow((this.x - another.x), 2)
                         + Math.pow((this.y - another.y), 2)
                         + Math.pow((this.z - another.z), 2)
-                )
+        )
         );
     }
 
@@ -70,8 +70,8 @@ public class Point {
      * @return distance between points
      */
     public static double distance3D(Point first, Point second) {
-        return (Math.sqrt
-                (Math.pow((first.x - second.x), 2)
+        return (Math.sqrt(
+                          Math.pow((first.x - second.x), 2)
                         + Math.pow((first.y - second.y), 2)
                         + Math.pow((first.z - second.z), 2)
                 )

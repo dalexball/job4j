@@ -38,8 +38,8 @@ public class MaxTest {
     }
 
     @Test
-    public void fourthHighest(){
-        int result = Max.max(1,2,3,4);
+    public void fourthHighest() {
+        int result = Max.max(1, 2, 3, 4);
         assertThat(result, is(4));
     }
 }
