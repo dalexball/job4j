@@ -30,6 +30,7 @@ public class StartUI {
      * @param userActions - user actions
      */
     private void showMenu(UserAction[] userActions) {
+        System.out.println("Menu.");
         for (int index = 0; index < userActions.length; index++) {
             System.out.println(index + ". " + userActions[index].name());
         }
