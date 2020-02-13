@@ -20,4 +20,6 @@ public interface Input {
      * @return - string value
      */
     String askString(String question);
+
+    int askInt(String question, int max);
 }
