@@ -9,9 +9,12 @@ import java.util.Scanner;
  * @version 1
  */
 public class ConsoleInput implements Input {
+
+
+    Scanner scanner = new Scanner(System.in);
+
     @Override
     public int askInt(String question) {
-        Scanner scanner = new Scanner(System.in);
         int res;
         res = Integer.parseInt(scanner.nextLine());
         return res;
@@ -20,7 +23,6 @@ public class ConsoleInput implements Input {
     @Override
     public String askString(String question) {
         System.out.println(question);
-        Scanner scanner = new Scanner(System.in);
         String res;
         res = scanner.nextLine();
         return res;
