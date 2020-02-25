@@ -90,10 +90,10 @@ public class TrackerTest {
         System.setOut(new PrintStream(out));
         Tracker tracker = new Tracker();
         String key = "key_name";
-        Item item = new Item("key_name");
+        Item item = new Item(key);
         tracker.add(item);
         FindByNameAction action = new FindByNameAction();
-        action.execute(new StubInput(new String[]{"0"}), tracker);
+        action.execute(new StubInput(new String[]{key}), tracker);
         String expect = new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
                 .add(String.format("%s %s", item.getName(), item.getId()))
                 .toString();
