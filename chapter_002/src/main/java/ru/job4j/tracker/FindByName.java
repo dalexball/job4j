@@ -1,5 +1,7 @@
 package ru.job4j.tracker;
 
+import java.util.List;
+
 /**
  * Finds items with same name, shows information about them
  *
@@ -17,7 +19,7 @@ public class FindByName implements UserAction {
     public boolean execute(Input input, Tracker tracker) {
         System.out.println("===Find Items by name===");
         String name = input.askString("Enter name: ");
-        Item[] items;
+        List<Item> items;
         items = tracker.findByName(name);
         for (Item item : items) {
             if (item != null) {

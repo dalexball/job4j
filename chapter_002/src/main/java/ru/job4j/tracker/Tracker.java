@@ -1,6 +1,7 @@
 package ru.job4j.tracker;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -13,12 +14,7 @@ public class Tracker {
     /**
      * Array for items
      */
-    private Item[] items = new Item[100];
-
-    /**
-     * Index for new item
-     */
-    private int position = 0;
+    private List<Item> items = new ArrayList<>();
 
     /**
      * Method generates unique key for each item
@@ -40,8 +36,7 @@ public class Tracker {
      */
     public Item add(Item item) {
         item.setId(this.generateId());
-        items[this.position] = item;
-        this.position++;
+        items.add(item);
         return item;
     }
 
@@ -50,19 +45,8 @@ public class Tracker {
      *
      * @return array
      */
-    public Item[] findAll() {
-        Item[] items = new Item[this.items.length];
-        items = Arrays.copyOf(this.items, this.items.length);
-        int size = 0;
-        for (int index = 0; index < items.length; index++) {
-            if (items[index] != null) {
-                items[size] = items[index];
-                size++;
-            }
-        }
-        Item[] newItems;
-        newItems = Arrays.copyOf(items, size);
-        return newItems;
+    public List<Item> findAll() {
+        return items;
     }
 
     /**
@@ -71,20 +55,13 @@ public class Tracker {
      * @param key - specific name
      * @return array of items with specific name
      */
-    public Item[] findByName(String key) {
-        Item[] items = new Item[this.items.length];
-        items = Arrays.copyOf(this.items, this.items.length);
-        int size = 0;
-        for (int index = 0; index < items.length; index++) {
-            if (items[index] != null) {
-                String name = items[index].getName();
-                if (name.equals(key)) {
-                    items[size] = items[index];
-                    size++;
-                }
+    public List<Item> findByName(String key) {
+        List<Item> items = new ArrayList<>();
+        for (Item item : this.items) {
+            if (item.getName().equals(key)) {
+                items.add(item);
             }
         }
-        items = Arrays.copyOf(items, size + 1);
         return items;
     }
 
@@ -95,27 +72,12 @@ public class Tracker {
      * @return item with specific id
      */
     public Item findById(String id) {
-        for (int i = 0; i != position + 1; i++) {
-            if (items[i] != null && items[i].getId().equals(id)) {
-                return items[i];
+        for (Item item : items) {
+            if (item.getId().equals(id)) {
+                return item;
             }
         }
         return null;
-    }
-
-    /**
-     * Gets index of item in array
-     *
-     * @param id - id of item
-     * @return - index of item
-     */
-    private int findPosition(String id) {
-        for (int i = 0; i < this.items.length; i++) {
-            if (this.items[i].getId().equals(id)) {
-                return i;
-            }
-        }
-        return -1;
     }
 
     /**
@@ -124,10 +86,11 @@ public class Tracker {
      * @param id - id of element
      */
     public void deleteById(String id) {
-        int index = findPosition(id);
-        if (index >= 0) {
-            items[index] = null;
-        } else {
+        for (Item item : items) {
+            if (item.getId().equals(id)) {
+                items.remove(item);
+                return;
+            }
             System.out.println("There is no element with such ID");
         }
     }
