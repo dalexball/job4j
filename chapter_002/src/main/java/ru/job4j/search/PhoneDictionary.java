@@ -34,10 +34,10 @@ public class PhoneDictionary {
     public ArrayList<Person> find(String key) {
         ArrayList<Person> result = new ArrayList<>();
         for (Person person : this.persons) {
-            if (person.getName().equals(key) ||
-                    person.getAddress().equals(key) ||
-                    person.getPhone().equals(key) ||
-                    person.getSurname().equals(key)) {
+            if (person.getName().equals(key)
+                    || person.getAddress().equals(key)
+                    || person.getPhone().equals(key)
+                    || person.getSurname().equals(key)) {
                 result.add(person);
             }
         }
