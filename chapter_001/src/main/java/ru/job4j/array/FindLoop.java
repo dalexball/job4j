@@ -37,7 +37,7 @@ public class FindLoop {
     public static int indexOf(int[] data, int elem, int startIndex, int finIndex) {
         int rst = -1; //if no element - return -1
         for (; startIndex != finIndex; startIndex++) {
-            if (data[startIndex] != elem) {
+            if (data[startIndex] == elem) {
                 rst = startIndex;
                 break;
             }
