@@ -1,7 +1,2 @@
-random number
-Working with branches
-
-Создание ветки из IDEA
-smth new
-smth enw2
-smth 3nwe
+[![Build Status](https://travis-ci.org/dalexball/job4j.svg?branch=master)](https://travis-ci.org/dalexball/job4j)
+[![codecov](https://codecov.io/gh/dalexball/job4j/branch/master/graph/badge.svg)](https://codecov.io/gh/dalexball/job4j)
