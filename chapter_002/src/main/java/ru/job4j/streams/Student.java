@@ -1,5 +1,9 @@
 package ru.job4j.streams;
 
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
 /**
  * Class models student who has certain score
  *
@@ -24,16 +28,26 @@ public class Student {
     }
 
     /**
-     * Students score
+     * Students score, name and surname
      */
     private int score;
+    private String surname;
+    private String name;
 
-    /**
-     * Get score
-     *
-     * @return score
-     */
     public int getScore() {
         return score;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    Map<String, Student> map(List<Student> students) {
+        return students.stream()
+                .collect(Collectors.toMap(Student::getSurname, s -> s));
     }
 }
