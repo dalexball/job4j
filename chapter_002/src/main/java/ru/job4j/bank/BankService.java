@@ -32,10 +32,10 @@ public class BankService {
      * @param account  - new account
      */
     public void addAccount(String passport, Account account) {
-        User user = findByPassport(passport);
-        if (user != null) {
-            this.users.get(user).add(account);
-        }
+        this.users.keySet().stream()
+                .filter(u -> u.getPassport().equals(passport))
+                .findFirst()
+                .ifPresent(u -> this.users.get(u).add(account));
     }
 
     /**
@@ -45,13 +45,10 @@ public class BankService {
      * @return - user
      */
     public User findByPassport(String passport) {
-        Set<User> users = this.users.keySet();
-        for (User user : users) {
-            if (user.getPassport().equals(passport)) {
-                return user;
-            }
-        }
-        return null;
+        return this.users.keySet().stream()
+                .filter(u -> u.getPassport().equals(passport))
+                .findFirst()
+                .orElse(null);
     }
 
     /**
@@ -62,19 +59,11 @@ public class BankService {
      * @return account
      */
     public Account findByRequisite(String passport, String requisite) {
-        Account account = null;
-        User user = findByPassport(passport);
-
-        if (user != null) {
-            for (Account ac : this.users.get(user)) {
-                if (ac.getRequisite().equals(requisite)) {
-                    account = ac;
-                    break;
-                }
-            }
-        }
-
-        return account;
+        return this.users.get(findByPassport(passport))
+                .stream()
+                .filter(ac -> ac.getRequisite().equals(requisite))
+                .findFirst()
+                .orElse(null);
     }
 
     /**
