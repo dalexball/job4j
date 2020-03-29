@@ -3,6 +3,7 @@ package ru.job4j.collection;
 import org.junit.Test;
 import ru.job4j.tracker.Item;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static java.util.Arrays.asList;
@@ -25,9 +26,9 @@ public class SortItemsTest {
         Item item1 = new Item("A");
         Item item2 = new Item("X");
         Item item3 = new Item("G");
-        List<Item> items = asList(item1, item2, item3);
+        List<Item> items = new ArrayList<>(List.of(item1, item2, item3));
         items.sort(new SortItems());
-        assertEquals(items, asList(item1, item3, item2));
+        assertEquals(items, List.of(item1, item3, item2));
     }
 
     /**
@@ -38,7 +39,7 @@ public class SortItemsTest {
         Item item1 = new Item("A");
         Item item2 = new Item("X");
         Item item3 = new Item("G");
-        List<Item> items = asList(item1, item2, item3);
+        List<Item> items = new ArrayList<>(List.of(item1, item2, item3));
         items.sort(new SortItems().reversed());
         assertEquals(items, asList(item2, item3, item1));
     }

@@ -5,7 +5,6 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Arrays;
 
 import static org.hamcrest.Matchers.lessThan;
 import static org.hamcrest.Matchers.greaterThan;
@@ -75,14 +74,11 @@ public class JobTest {
     @Test
     public void whenCompareByNameAndThenPriority() {
         Comparator<Job> comparator = new JobDescByName().thenComparing(new JobDescByPriority());
-        List<Job> jobs = new ArrayList<>();
         Job job1 = new Job("Engineer", 0);
         Job job2 = new Job("Engineer", 1);
         Job job3 = new Job("Dantist", 3);
-        jobs.add(job1);
-        jobs.add(job2);
-        jobs.add(job3);
+        List<Job> jobs = new ArrayList<>(List.of(job1, job2, job3));
         jobs.sort(comparator);
-        assertEquals(jobs, Arrays.asList(job2, job1, job3));
+        assertEquals(jobs, List.of(job2, job1, job3));
     }
 }

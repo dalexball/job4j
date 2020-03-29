@@ -58,8 +58,8 @@ public class DepDescCompTest {
      */
     @Test
     public void sortedList() {
-        List<String> input = Arrays.asList("k1/sk1", "k2/sk1");
-        List<String> expect = Arrays.asList("k2", "k2/sk1", "k1", "k1/sk1");
+        List<String> input = List.of("k1/sk1", "k2/sk1");
+        List<String> expect = List.of("k2", "k2/sk1", "k1", "k1/sk1");
         List<String> result = Departments.fillGaps(input);
         result.sort(new DepDescComp());
         assertThat(result, is(expect));
